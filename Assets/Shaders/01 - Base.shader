@@ -1,4 +1,4 @@
-﻿Shader "ShaderIntro/01"
+﻿Shader "ShaderIntro/01/Base"
 {
     Properties
     {
