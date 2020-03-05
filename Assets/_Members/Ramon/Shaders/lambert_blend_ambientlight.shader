@@ -79,7 +79,7 @@
                 //lightMask
                 
                 float4 light = _LightColor0 * lightStep;               
-                float4 lightAmbDark = light + unity_AmbientSky + ((_LightColor0 * 0.2 * _lightMixer));
+                float4 lightAmbDark = light + UNITY_LIGHTMODEL_AMBIENT + ((_LightColor0 * 0.2 * _lightMixer));
                 float4 lightAmb = lerp (lightAmbDark,light, lightStep * _AmbientPow);
 
                 float decolorizedLightAmb = 0.21 * lightAmb.r + 0.71 * lightAmb.g + 0.07 * lightAmb.b;
