@@ -2,6 +2,7 @@
 Shader "studies/shader_unlit_explained"
 {
     //properties used in editor
+    //
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
@@ -12,6 +13,7 @@ Shader "studies/shader_unlit_explained"
     //i.e. a subshader for each LOD 
     SubShader
     {
+        // Configure subshader properties such as tags(render type, ), LOD, Blending, 
         Tags { "RenderType"="Opaque" }
         LOD 100
 
