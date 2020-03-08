@@ -1,5 +1,7 @@
-﻿Shader "Caua/Lesson_02"
+﻿
+Shader "Caua/Lesson_02"
 {
+
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
@@ -34,22 +36,16 @@
 
             v2f vert (appdata v)
             {
-                //calls the v2f program "o"
                 v2f o;
-                //"o" vertex = converted the model vertex information "v" to screen coordinate
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                //o.uv = apply the uv transformations from _Maintex to v.uv
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // the uv only has coordinate input information, so it's necessarly a float2
-                fixed4 texcol = tex2D(_MainTex, i.uv);
-                fixed4 col = float4(i.uv.xy, 0, 1);
-                col *= texcol;
-
+                fixed4 col = tex2D(_MainTex, i.uv);
+                
                 return col;
             }
             ENDCG
