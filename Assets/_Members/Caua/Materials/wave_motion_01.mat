@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: material_01
+  m_Name: wave_motion_01
   m_Shader: {fileID: 4800000, guid: 3a1aff9639979624e8e1fc5a9dfb8e38, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
