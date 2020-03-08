@@ -1,4 +1,4 @@
-﻿Shader "studies/shader_01"
+﻿Shader "Caua/studies/wave_motion_01"
 {
     
     Properties

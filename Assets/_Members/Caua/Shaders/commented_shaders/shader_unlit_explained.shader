@@ -1,8 +1,7 @@
 ﻿// name and path used in editor
-Shader "studies/shader_unlit_explained"
+Shader "Caua/studies/shader_unlit_explained"
 {
     //properties used in editor
-    //
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
@@ -13,7 +12,7 @@ Shader "studies/shader_unlit_explained"
     //i.e. a subshader for each LOD 
     SubShader
     {
-        // Configure subshader properties such as tags(render type, ), LOD, Blending, 
+        
         Tags { "RenderType"="Opaque" }
         LOD 100
 
@@ -29,7 +28,7 @@ Shader "studies/shader_unlit_explained"
             // unityCG.cging includes a bunch of usefull operations we can use
             #include "UnityCG.cginc"
 
-            // struct is a structure of data we use to store information ina single variable 
+            // struct is a structure of data we use to store information in a single variable 
             
             // struct appdata contains vertex position and uv0 texture coordinates (local space?)
             struct appdata
@@ -46,6 +45,7 @@ Shader "studies/shader_unlit_explained"
             };
 
             // These are properties we already exposed in the editor and will be used as input to the vertex and fragment programs in the folowing lines
+            //_Maintex_ST is *probably* a UnityCG.cginc funtion used to scale and offset the inputed _Maintex
             sampler2D _MainTex;
             float4 _MainTex_ST;
             
@@ -53,7 +53,7 @@ Shader "studies/shader_unlit_explained"
             // we are calling the "appdata" vertex information = "v" 
             // creating a new struct called "o"
             // vertex is being converted from local space to screen space by UnityObjectToClipPos
-            // trasnforming the uv data
+            // transforming the uv data
             // return the struct "o" result
             v2f vert (appdata v)
             {

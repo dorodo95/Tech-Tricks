@@ -1,7 +1,8 @@
 ﻿// name and path used in editor
-Shader "studies/shader_unlit_explained"
+Shader "Caua/studies/shader_unlit_explained_simplified"
 {
     //properties used in editor
+    //
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
@@ -12,7 +13,7 @@ Shader "studies/shader_unlit_explained"
     //i.e. a subshader for each LOD 
     SubShader
     {
-        
+        // Configure subshader properties such as tags(render type, ), LOD, Blending, 
         Tags { "RenderType"="Opaque" }
         LOD 100
 
@@ -28,7 +29,7 @@ Shader "studies/shader_unlit_explained"
             // unityCG.cging includes a bunch of usefull operations we can use
             #include "UnityCG.cginc"
 
-            // struct is a structure of data we use to store information in a single variable 
+            // struct is a structure of data we use to store information ina single variable 
             
             // struct appdata contains vertex position and uv0 texture coordinates (local space?)
             struct appdata

@@ -1,4 +1,4 @@
-﻿Shader "studies/shader_02"
+﻿Shader "Caua/studies/planet_generator_01"
 {
     
     Properties
