@@ -24,7 +24,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _A: 1
+    - _B: 1.1
+    - _C: 0
+    - _D: 1
     - _Diffuseness: 1.01
-    - _MaxSmooth: 1.14
+    - _MaxSmooth: 1.07
     - _MinSmooth: 1
+    - _T: 1
+    - _Y: 2
     m_Colors: []

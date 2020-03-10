@@ -3,8 +3,12 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _MinSmooth("Min_Smooth", Range (0,2) ) = 0
-        _MaxSmooth("Max_Smooth", Range (0,2) ) = 1
+        _A("A", float ) = 1
+        _B("B", float ) = 1
+        _T("T", float ) = 1
+        _C("C", float ) = 1
+        _D("Darkness", Range(0,1) ) = 1
+        _Y("division", float) = 1
     }
     SubShader
     {
@@ -35,8 +39,12 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float _MinSmooth;
-            float _MaxSmooth;
+            float _A;
+            float _B;
+            float _T;
+            float _C;
+            float _D;
+            float _Y;
             float pi = 3.141592653589793238462;
 
             v2f vert (appdata v)
@@ -52,12 +60,14 @@
             {
                 float3 lightDir = _WorldSpaceLightPos0;
                 float lightRawMask = dot(i.normal, lightDir);
-                float lightSine = sin(lightRawMask * (2*pi- asin(-_MinSmooth/_MaxSmooth))+(1-lightRawMask)* - asin(_MinSmooth/_MaxSmooth))*-_MaxSmooth;
-                float lightGradient = (lightRawMask+ 1) /2;
-                //float lightSmooth = smoothstep(_MinSmooth,_MaxSmooth,lightGradient);
+                float lightSine = ((sin((lightRawMask/_T) * (2*pi- asin(-_A/_B))+(1-(lightRawMask/_T))* - asin(_A/_B))*-_B)+(_B*_D))/_Y + _C;
+                //float lightGradient = (lightRawMask+ 1) /2;
 
-                float4 light = _LightColor0 * lightSine;
-                fixed4 col = tex2D(_MainTex, i.uv) * light;
+                float4 light = _LightColor0 * lightSine;               
+                float4 lightAmbDark = light + UNITY_LIGHTMODEL_AMBIENT;
+                float4 lightAmb = lerp (lightAmbDark,light, lightSine);
+
+                fixed4 col = tex2D(_MainTex, i.uv) * lightAmb;
 
                 return col;
             }
