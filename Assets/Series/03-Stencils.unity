@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 261761119}
   - component: {fileID: 261761118}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: StencilSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 1108381885}
   - component: {fileID: 1108381884}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: stencilMask-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 1613721197}
   - component: {fileID: 1613721196}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: StencilMask-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
