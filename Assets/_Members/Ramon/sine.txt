@@ -1,0 +1,1 @@
+y=\frac{\left(\sin\left(\frac{x}{t}\cdot\left(2\pi-\sin^{-1}\left(\frac{-a}{-b}\right)\right)+\left(1-\frac{x}{t}\right)\cdot-\sin^{-1}\left(\frac{a}{-b}\right)\right)\cdot-b\ \right)+\left(b\cdot d\right)}{c}
