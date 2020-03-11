@@ -3,10 +3,12 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _size1("Tamanho", float) = 1
+        _size2("Tamanho2",float) = 1
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" } 
 
         Pass
         {
@@ -31,6 +33,8 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float _size1;
+            float _size2;
 
             v2f vert (appdata v)
             {
@@ -42,11 +46,11 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 speed1 = i.uv + frac(_Time);
-                float2 speed2 = i.uv + frac(_Time) * 0.2;
-                float2 speed3 = i.uv + frac(_Time) * 0.4;
-                float2 speed4 = i.uv + frac(_Time) * 0.6;
-                float2 speed5 = i.uv + frac(_Time) * 0.8;
+                float2 speed1 = i.uv + frac(_Time) - 0.5;
+                float2 speed2 = i.uv + frac(_Time* 0.2) - 0.5;
+                float2 speed3 = i.uv + frac(_Time* 0.4) - 0.5;
+                float2 speed4 = i.uv + frac(_Time* 0.6) - 0.5;
+                float2 speed5 = i.uv + frac(_Time* 0.8) - 0.5;
 
 
                 float2 circle1Pos = speed1;
@@ -55,11 +59,11 @@
                 float2 circle4Pos = float2(speed4.x - 0.2, speed4.y + 0.2);
                 float2 circle5Pos = float2(speed5.x + 0.2, speed5.y - 0.2);
 
-                float circle = step(distance(circle1Pos, 0.5), 0.1);
-                float circle2 = step(distance(circle2Pos, 0.5), 0.02);
-                float circle3 = step(distance(circle3Pos, 0.5), 0.02);
-                float circle4 = step(distance(circle4Pos, 0.5), 0.02);
-                float circle5 = step(distance(circle5Pos, 0.5), 0.02);
+                float circle = step(distance(circle1Pos, 0.5), _size1 * 0.1);
+                float circle2 = step(distance(circle2Pos, 0.5), _size2 * 0.01);
+                float circle3 = step(distance(circle3Pos, 0.5), _size2 * 0.01);
+                float circle4 = step(distance(circle4Pos, 0.5), _size2 * 0.01);
+                float circle5 = step(distance(circle5Pos, 0.5),_size2 * 0.01);
 
                 fixed4 col = tex2D(_MainTex, i.uv);
                 return circle + circle2 + circle3 + circle4 + circle5;
