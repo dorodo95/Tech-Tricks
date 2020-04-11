@@ -1,14 +1,17 @@
 ﻿
 Shader "Caua/Lesson_02"
 {
-
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Color", Color) = (1,1,1,1)
+        _Speed ("Speed", Range(0,100)) = 1
+        _Step ("Step", Range(0,1)) = 0.1
+
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" }
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -27,26 +30,29 @@ Shader "Caua/Lesson_02"
             struct v2f
             {
                 float4 vertex : SV_POSITION;
-                float2 uv : TEXCOORD0;
-                
+                float4 uv : TEXCOORD0;
             };
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+            fixed4 _Color;
+            float _Speed;
+            float _Step;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv.xy = v.uv - 0.5;
+                o.uv.w = frac(_Time * _Speed + 0.5);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
-                
-                return col;
+                float dist = length(i.uv.xy * 2);
+                float alpha = saturate(i.uv.w - (dist * 2));
+
+                alpha = step(_Step , alpha);
+                return fixed4(_Color.rgb, _Color.a * alpha);
             }
             ENDCG
         }
